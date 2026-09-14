@@ -1,0 +1,11 @@
+Course: CMSC 203
+Student: C D
+Default configuration was not used.
+Average for category Projects: 95.00
+Weighted average for category Projects: 38.00
+All grades in category Quizzes are invalid.
+Average for category Exams: 85.00
+Weighted average for category Exams: 25.50
+Overall numeric average: 63.50
+Base letter grade: D
+Final letter grade: D

@@ -3,9 +3,9 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .kotlin
-.idea
-dbg
-libs
+.idea/
+dbg/
+libs/
 
 ### Eclipse ###
 .apt_generated

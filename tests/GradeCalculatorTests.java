@@ -41,6 +41,11 @@ class GradeCalculatorTests {
         fail(msg);
     }
 
+    /** Single-string convenience overload. */
+    static void assertContainsAny(String haystack, String needle, String msg) {
+        assertContainsAny(haystack, List.of(needle), msg);
+    }
+
     static void assertNotContains(String haystack, String needle, String msg) {
         assertFalse(haystack.contains(needle), msg);
     }
@@ -68,8 +73,9 @@ class GradeCalculatorTests {
         }
     }
 
-    /** Compile output directory (javac -d out src/GradeCalculator.java). */
-    static final Path OUT_DIR = Paths.get("out");
+    /** Compile output directory (javac -d out src/GradeCalculator.java), resolved to an
+     *  absolute path because each subprocess runs in a temp working directory. */
+    static final Path OUT_DIR = Paths.get("out").toAbsolutePath();
 
     /**
      * Run the program once.

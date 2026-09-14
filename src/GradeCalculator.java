@@ -140,6 +140,8 @@ public class GradeCalculator {
 
             //ensure category names match and default config is not used
             if (!useDefaultConfig && category.equals(configFile.next())) {
+                // Read the weight right after the category name so it is consumed even when every grade in this category is invalid
+                int weight = configFile.nextInt();
                 int numberOfGrades = gradeFile.nextInt();
                 double sumOfGrades = 0;
                 //loop  through each grade
@@ -158,7 +160,7 @@ public class GradeCalculator {
                     System.out.printf("Average for category %s: %.2f\n", category, average);
                     report.printf("Average for category %s: %.2f\n", category, average);
 
-                    double weightedAverage = average * (configFile.nextInt() / 100.0);
+                    double weightedAverage = average * (weight / 100.0);
                     finalAverageWeight += weightedAverage;
                    System.out.printf("Weighted average for category %s: %.2f\n", category, weightedAverage);
                     report.printf("Weighted average for category %s: %.2f\n", category, weightedAverage);
@@ -168,14 +170,7 @@ public class GradeCalculator {
                     report.println("All grades in category " + category + " are invalid.");
                 }
 
-                // [BUG - desync, 1 test failing] The nextLine() below is ONLY reached when the
-                // if-branch ran. When ALL grades are invalid, the else-branch above runs and this
-                // newline is never consumed - so on the NEXT loop iteration nextLine() returns the
-                // leftover score text (e.g. "90.0") as a "category name" -> false
-                // "does not match" error, and every category after that one is misread.
-                // FIX: the newline must be consumed on BOTH paths, e.g. move this line OUT of the
-                // if-block so it always runs (or add the same nextLine() to the else above).
-                gradeFile.nextLine(); // consume the newline
+                gradeFile.nextLine(); // consume the newline at the end of the score line
 
             } else if (useDefaultConfig){
                 int numberOfGrades = gradeFile.nextInt();
@@ -212,17 +207,12 @@ public class GradeCalculator {
                     report.println("All grades in category " + category + " are invalid.");
                 }
 
-                // [BUG - same desync as in the custom-config branch above] When all grades in
-                // this category are invalid, the nextLine() below never runs, and the next
-                // category is misread. Same fix: consume the newline on BOTH paths.
-                gradeFile.nextLine(); // consume the newline
+                gradeFile.nextLine(); // consume the newline at the end of the score line
 
             }else { // if category names don't match
                 System.out.println("Category name in grade file does not match config file.");
                 report.println("Category name in grade file does not match config file.");
                 // discard bad category information
-                // (correct: per the file format the whole score list is ONE line, so
-                //  skipping the count line + one line drops the entire bad block)
                 gradeFile.nextLine(); gradeFile.nextLine(); // skip the category name and number of grades
                 configFile.nextLine();
             }
@@ -261,7 +251,7 @@ public class GradeCalculator {
         //apply plus minus grading if true
 
         //get the decimal
-        // my cutoffs (spec allows defining my own): decimal part of the numeric average
+        // my cutoffs decimal part of the numeric average
         // above 70 gives "+", below 30 gives "-", otherwise no suffix; 100.0 is special-cased to A+
         double totalWeightedAverageDecimal = (finalAverageWeight*100)%100;
 

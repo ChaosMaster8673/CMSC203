@@ -1,3 +1,12 @@
+/**
+ * Assignment Name: Lab1 Movie Driver Task 1
+ * File Name: MovieDriverTask1.java
+ * Author: Jacen Cheskin
+ * Class: CMSC 203
+ * Professor: Professor Grinberg
+ * Description: This program creates a Movie object and allows the user to input the title, rating, and number of tickets sold. It then displays the information about the movie.
+ */
+
 import java.util.Scanner;
 
 public class MovieDriverTask1 {

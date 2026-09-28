@@ -1,3 +1,10 @@
+/**
+ * Procedure class represents a medical procedure with its details.
+ * It includes attributes such as name, date, practitioner, and charges.
+ * The class provides constructors, getters, setters, and additional methods
+ * to manipulate and retrieve information about the procedure.
+ */
+
 public class Procedure {
 
     //initialize variables
@@ -65,6 +72,38 @@ public class Procedure {
         return "Procedure Name: " + name + "\nDate: " + date + "\nPractitioner: " + practitioner + "\nCharges: $" + charges;
     }
 
-    
+    //additional methods
+
+    //expensive procedure method
+    public boolean isExpensive() {
+        return charges > 1000;
+    }
+
+    //apply discount method
+    public void applyDiscount(double percentage) {
+        charges = charges - (charges * (percentage / 100));
+    }
+
+    //get charge category method
+    public String getChargeCategory() {
+        if (charges < 100) {
+            return "Low";
+        } else if (charges >= 100 && charges <= 500) {
+            return "Medium";
+        } else {
+            return "High";
+        }
+    }
+
+    //is performed by practitioner method name
+
+    public boolean isPerformedBy(String practitionerName) {
+        return practitioner.equalsIgnoreCase(practitionerName);
+    }
+
+    //get formatted charges method
+    public String getFormattedCharge() {
+        return String.format("$%.2f", charges);
+    }
 
 }

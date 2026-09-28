@@ -1,3 +1,12 @@
+
+
+
+/**
+ * Patient class represents a patient with their personal and contact information.
+ * It includes attributes such as name, address, and emergency contact details.
+ * The class provides constructors, getters, setters, and additional methods
+ * to manipulate and retrieve information about the patient.
+ */
 public class Patient {
     //initialize variables
 

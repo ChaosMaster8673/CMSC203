@@ -39,6 +39,10 @@ public class Procedure {
     }
 
     //getters and setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -75,20 +79,25 @@ public class Procedure {
     //additional methods
 
     //expensive procedure method
-    public boolean isExpensive() {
-        return charges > 1000;
+    public boolean isExpensiveProcedure() {
+        return charges >= 1000.00;
     }
 
     //apply discount method
     public void applyDiscount(double percentage) {
+        if (percentage < 0 || percentage > 100) {
+            //illegal percentage
+            System.out.println("Invalid percentage");
+            return;
+        }
         charges = charges - (charges * (percentage / 100));
     }
 
     //get charge category method
     public String getChargeCategory() {
-        if (charges < 100) {
+        if (charges <= 250.00) {
             return "Low";
-        } else if (charges >= 100 && charges <= 500) {
+        } else if (charges > 250.00 && charges <= 1000.00) {
             return "Medium";
         } else {
             return "High";
@@ -101,9 +110,9 @@ public class Procedure {
         return practitioner.equalsIgnoreCase(practitionerName);
     }
 
-    //get formatted charges method
+    //get formatted charges method and separate by commas every 3 digits
     public String getFormattedCharge() {
-        return String.format("$%.2f", charges);
+        return String.format("$%,.2f", charges);
     }
 
 }

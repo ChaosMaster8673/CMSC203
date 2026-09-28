@@ -170,8 +170,8 @@ public class Patient {
     //build full address method
     public String buildAddress() {
         String fullAddress = streetAddress;
-        fullAddress += ", " + city;
-        fullAddress += ", " + state;
+        fullAddress += " " + city;
+        fullAddress += " " + state;
         fullAddress += " " + zipCode;
         return fullAddress;
     }
@@ -179,7 +179,7 @@ public class Patient {
     //build emergency contact method
     public String buildEmergencyContact() {
         String emergencyContact = emergencyContactName;
-        emergencyContact += " - " + emergencyContactPhoneNumber;
+        emergencyContact += " " + emergencyContactPhoneNumber;
         return emergencyContact;
     }
 
@@ -192,37 +192,51 @@ public class Patient {
     }
 
     //method for checking if phone number is valid
-    public boolean isValidPhoneNumber(String phoneNumber) {
-        //check if phone number is 10 digits
-        if (phoneNumber.length() != 10) {
+    public boolean isValidPhoneNumber() {
+        //check if correct number of digits
+        if (phoneNumber.length() != 12) {
             return false;
         }
-        //check if phone number is all digits
+        //check for dashes and digits
         for (int i = 0; i < phoneNumber.length(); i++) {
-            if (!Character.isDigit(phoneNumber.charAt(i))) {
-                return false;
+            if (i != 3 && i != 7){
+                if (!Character.isDigit(phoneNumber.charAt(i))) {
+                    return false;
+                }
+            } else{
+                if (phoneNumber.charAt(i) != '-') {
+                    return false;
+                }
+
             }
+
         }
         return true;
     }
 
     //check if emergency contact phone number is valid
-    public boolean isValidEmergencyContactPhoneNumber(String emergencyContactPhoneNumber) {
-        //check if emergency contact phone number is 10 digits
-        if (emergencyContactPhoneNumber.length() != 10) {
+    public boolean isValidEmergencyContactPhoneNumber() {
+        //check if emergency contact phone number is 12 digits
+        if (emergencyContactPhoneNumber.length() != 12) {
             return false;
         }
-        //check if phone number is all digits
+        //check if phone number is all digits except for dashes at the correct positions
         for (int i = 0; i < emergencyContactPhoneNumber.length(); i++) {
-            if (!Character.isDigit(emergencyContactPhoneNumber.charAt(i))) {
-                return false;
+            if (i != 3 && i != 7) {
+                if (!Character.isDigit(emergencyContactPhoneNumber.charAt(i))) {
+                    return false;
+                }
+            } else {
+                if (emergencyContactPhoneNumber.charAt(i) != '-') {
+                    return false;
+                }
             }
         }
         return true;
     }
 
     //get name in last, first, middle format
-    public String getLastFirstMiddleName() {
+    public String getLastFirstMiddle() {
         String fullName = lastName;
         fullName += ", " + firstName;
         fullName += " " + middleName;
@@ -235,8 +249,9 @@ public class Patient {
     }
 
     //update street address/zipcode
-    public void updateAddress(String streetAddress, String state, String zipCode) {
+    public void updateAddress(String streetAddress, String city, String state, String zipCode) {
         this.streetAddress = streetAddress;
+        this.city = city;
         this.state = state;
         this.zipCode = zipCode;
     }

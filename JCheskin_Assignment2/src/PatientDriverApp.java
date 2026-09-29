@@ -83,7 +83,7 @@ public class PatientDriverApp {
         procedure1.setName("Physical Exam");
         procedure1.setDate("07/20/2026");
         procedure1.setPractitioner("Dr. Irvine");
-        procedure1.setCharges(250.00);
+        procedure1.setCharges(1000.00);
         return procedure1;
     }
 

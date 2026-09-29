@@ -3,6 +3,18 @@
  * It includes attributes such as name, date, practitioner, and charges.
  * The class provides constructors, getters, setters, and additional methods
  * to manipulate and retrieve information about the procedure.
+ *
+ * Course: CMSC203 CRN 21305
+ *  * Professor Grinberg
+ *  * Due Date: 09/28/2026
+ *  * Platform/Compiler: Windows 11, javac
+ *  *
+ *  * Integrity Pledge: I pledge that I have completed the programming
+ *  * assignment independently. I have not copied the code from a student
+ *  * or any source.
+ *  *
+ *  * @author Jacen Cheskin
+ *  * @version 1.0
  */
 
 public class Procedure {

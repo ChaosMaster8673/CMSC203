@@ -84,6 +84,7 @@ public class PatientDriverApp {
         procedure1.setDate("07/20/2026");
         procedure1.setPractitioner("Dr. Irvine");
         procedure1.setCharges(1000.00);
+        procedure1.applyDiscount(20.0); // apply a 20% discount to the charges
         return procedure1;
     }
 

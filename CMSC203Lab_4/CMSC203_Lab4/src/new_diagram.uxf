@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>280</y>
+      <w>750</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>CryptoManager
+--
+_+LOWER_RANGE:char_
+_+UPPER_RANGE:char_
+_+GRID_SIZE:int_
+_+PAD_LETTER:char_
+--
+_+isStringInBounds(plainText:String):boolean_
+_+vigenereEncryption(plainText:String, key:String):String_
+_+vigenereDecryption(encryptedText:String, key:String):String_
+_+playfairEncryption(plainText:String, key:String):String_
+_+playfairDecryption(encryptedText:String, key:String):String_
+_+caesarEncryption(plainText:String, key:int):String_
+_+caesarDecryption(encryptedText:String, key:int):String_
+_-buildPlayfairGrid(key:String):char[][]_
+_-preparePlayfairPlaintext(plainText:String):String_
+_-findRow(grid:char[][], letter:char):int_
+_-findCol(grid:char[][], letter:char):int_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

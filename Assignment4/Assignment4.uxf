@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>450</y>
+      <w>340</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Property
+-
+-propertyName: String
+-city: String
+-rentAmount: double
+-owner: String
+-
++Property()
++Property(String, String, double, String)
++Property(Property)
++getPropertyName(): String
++setPropertyName(String)
++getCity(): String
++setCity(String)
++getRentAmount(): double
++setRentAmount(double)
++getOwner(): String
++setOwner(String)
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>450</y>
+      <w>330</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>ManagementCompany
+-
+_+MAX_PROPERTIES: int_
+-name: String
+-taxId: String
+-properties: Property[]
+-propertyCount: int
+-
++ManagementCompany(String, String)
++ManagementCompany(ManagementCompany)
++addProperty(Property): int
++totalRent(): double
++getPropertyCount(): int
++getProperty(int): Property
++getName(): String
++getTaxId(): String
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>330</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>PropertyDriver
+-
+_main(String[]): void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>540</y>
+      <w>280</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+r2=properties
+m2=0..*</panel_attributes>
+    <additional_attributes>260.0;30.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>380</y>
+      <w>80</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+creates</panel_attributes>
+    <additional_attributes>30.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>360</y>
+      <w>190</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+creates</panel_attributes>
+    <additional_attributes>10.0;160.0;170.0;10.0</additional_attributes>
+  </element>
+</diagram>
